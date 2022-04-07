@@ -5,14 +5,11 @@ class Solution {
             pq.add(stone);
         }
         
-        int n = stones.length;
-        while(n != 1) {
+        while(pq.size() > 1) {
             int first = pq.remove();
             int second = pq.remove();
-            
             int diff = first - second;
             pq.add(diff);
-            n--;
         }
         
         return pq.remove();
