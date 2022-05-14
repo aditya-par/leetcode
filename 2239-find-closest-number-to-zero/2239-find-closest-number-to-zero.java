@@ -1,22 +1,18 @@
 class Solution {
     public int findClosestNumber(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap();
-        for(int i = 0; i < nums.length; i++) {
-            map.put(nums[i], Math.abs(nums[i]));
-        }
+        int min  = Integer.MAX_VALUE;
+        int closest = 0;
         
-        int min = Integer.MAX_VALUE;
-        for(int i : map.keySet()) {
-            min = Math.min(min, map.get(i));
-        }
-        
-        int ans = Integer.MIN_VALUE;
-        for(int i : map.keySet()) {
-            if(map.get(i) == min) {
-                ans = Math.max(ans, i);
+        for(int n : nums) {
+            if(min > Math.abs(n)) {
+                min = Math.abs(n);
+                closest = n;
+            }
+            else if(Math.abs(n) == min && closest < n) {
+                closest = n;
             }
         }
         
-        return ans;
+        return closest;
     }
 }
