@@ -10,7 +10,7 @@ class Solution {
         int i = 0;
         while(i < s.length()) {
             int range = lastIndex[s.charAt(i) - 'a'];
-            for(int j = 0; j <= range; j++) {
+            for(int j = i; j <= range; j++) {
                 range = Math.max(range, lastIndex[s.charAt(j) - 'a']);
             }
             resultList.add(range - i + 1);
